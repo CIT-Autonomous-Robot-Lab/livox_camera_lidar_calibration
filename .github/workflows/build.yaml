@@ -6,7 +6,7 @@ jobs:
   build:
     runs-on: ubuntu-20.04
     env:
-      CATKIN_WS: /home/catkin_ws
+      CATKIN_WS: /home/runner/work/catkin_ws
     steps:
     - uses: actions/checkout@v2
 
@@ -27,8 +27,7 @@ jobs:
     - name: pre build
       run: |
         source /opt/ros/noetic/setup.bash
-        cd ${CATKIN_WS}/src
-        git clone git@github.com:CIT-Autonomous-Robot-Lab/livox_camera_lidar_calibration.git
+        cd ${CATKIN_WS}/src/livox_camera_lidar_calibration
         git submodule update --init --recursive
         rosdep update
         rosdep install -i -y --from-paths ./

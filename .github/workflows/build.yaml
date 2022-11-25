@@ -6,7 +6,7 @@ jobs:
   build:
     runs-on: ubuntu-20.04
     env:
-      CATKIN_WS: /home/runner/work/catkin_ws
+      CATKIN_WS: /home/catkin_ws
     steps:
     - uses: actions/checkout@v2
 

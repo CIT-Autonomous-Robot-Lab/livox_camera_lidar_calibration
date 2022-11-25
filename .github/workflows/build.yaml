@@ -21,7 +21,7 @@ jobs:
     - name: Init workspace
       run: |
         source /opt/ros/noetic/setup.bash
-        mkdir -p ${CATKIN_WS}/src
+        sudo mkdir -p ${CATKIN_WS}/src
         ln -s ${GITHUB_WORKSPACE} ${CATKIN_WS}/src/
 
     - name: pre build

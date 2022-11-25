@@ -18,7 +18,7 @@ jobs:
     - name: Install catkin tool
       run: sudo apt-get install python3-catkin-tools
 
-   - name: install ceres-solver
+    - name: install ceres-solver
       run: |
         sudo apt-get install cmake
         sudo apt-get install libgoogle-glog-dev libgflags-dev

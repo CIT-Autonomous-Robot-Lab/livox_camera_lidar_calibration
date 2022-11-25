@@ -28,6 +28,7 @@ jobs:
       run: |
         source /opt/ros/noetic/setup.bash
         cd ${CATKIN_WS}/src
+        git clone git@github.com:CIT-Autonomous-Robot-Lab/livox_camera_lidar_calibration.git
         git submodule update --init --recursive
         rosdep update
         rosdep install -i -y --from-paths ./

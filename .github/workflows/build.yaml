@@ -36,5 +36,7 @@ jobs:
       run: |
         source /opt/ros/noetic/setup.bash
         cd ${CATKIN_WS}
-        sudo apt install libpcl-dev
+        sudo apt-get install libpcl-dev
+        sudo apt-get install ros-noetic-pcl-conversions
+        sudo apt-get install ros-noetic-pcl-ros
         catkin build

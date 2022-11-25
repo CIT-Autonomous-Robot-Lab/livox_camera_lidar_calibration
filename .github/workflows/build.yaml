@@ -18,9 +18,22 @@ jobs:
     - name: Install catkin tool
       run: sudo apt-get install python3-catkin-tools
 
+    - name: Init workspace
+      run: |
+        source /opt/ros/noetic/setup.bash
+        sudo mkdir -p ${CATKIN_WS}/src
+        ln -s ${GITHUB_WORKSPACE} ${CATKIN_WS}/src/
+
+    - name: pre build
+      run: |
+        source /opt/ros/noetic/setup.bash
+        cd ${CATKIN_WS}/src/livox_camera_lidar_calibration
+        git submodule update --init --recursive
+        rosdep update
+        rosdep install -i -y --from-paths ./
+
     - name: install ceres-solver
       run: |
-        cd
         sudo apt-get install cmake
         sudo apt-get install libgoogle-glog-dev libgflags-dev
         sudo apt-get install libatlas-base-dev
@@ -37,24 +50,9 @@ jobs:
 
     - name: install eigen
       run: |
-        cd
         wget https://gitlab.com/libeigen/eigen/-/archive/3.4.0/eigen-3.4.0.tar.gz
         sudo tar zxf eigen-3.4.0.tar.gz
         sudo cp -r eigen-3.4.0/Eigen/ /usr/local/include/eigen3
-
-    - name: Init workspace
-      run: |
-        source /opt/ros/noetic/setup.bash
-        sudo mkdir -p ${CATKIN_WS}/src
-        ln -s ${GITHUB_WORKSPACE} ${CATKIN_WS}/src/
-
-    - name: pre build
-      run: |
-        source /opt/ros/noetic/setup.bash
-        cd ${CATKIN_WS}/src/livox_camera_lidar_calibration
-        git submodule update --init --recursive
-        rosdep update
-        rosdep install -i -y --from-paths ./
 
     - name: build
       run: |
